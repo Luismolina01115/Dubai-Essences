@@ -1,0 +1,568 @@
+:root {
+    --ink: #29251f;
+    --muted: #746d63;
+    --paper: #f7f4ef;
+    --accent: #b75d4a;
+    --accent-dark: #8c4035;
+    --line: #ded8ce;
+    --highlight: #efe3d4;
+    --serif: Georgia, "Times New Roman", serif;
+    --sans: "Trebuchet MS", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    color: var(--ink);
+    background: var(--paper);
+    font-family: var(--serif);
+}
+
+main,
+.site-header,
+footer,
+.hero,
+.collection,
+.manifesto,
+.registration,
+.feature-bar {
+    width: min(100%, 1400px);
+    margin-inline: auto;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button,
+input {
+    font: inherit;
+}
+
+button {
+    width: fit-content;
+    border: 0;
+    border-radius: 999px;
+    padding: 0.9rem 1.4rem;
+    color: #fff;
+    background: var(--accent);
+    font: bold 0.95rem var(--sans);
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+button:hover {
+    background: var(--accent-dark);
+    transform: translateY(-1px);
+}
+
+.site-header {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    padding: 1.6rem max(2rem, 7vw);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: rgba(247, 244, 239, 0.9);
+    backdrop-filter: blur(6px);
+    max-width: 1400px;
+}
+
+.brand {
+    font-size: 1.25rem;
+    letter-spacing: 0.02em;
+}
+
+nav {
+    display: flex;
+    gap: 2rem;
+    color: var(--muted);
+    font: 0.78rem var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+nav a:hover {
+    color: var(--accent);
+}
+
+.bag-button {
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 0.65rem 1rem;
+    color: var(--ink);
+    background: transparent;
+    font: 0.75rem var(--sans);
+}
+
+.bag-button span {
+    margin-left: 0.4rem;
+    color: var(--accent);
+}
+
+.bag-button.is-selected {
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.hero {
+    min-height: 72vh;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 1fr 0.8fr;
+    gap: 4rem;
+    padding: 5rem max(2rem, 10vw) 7rem;
+    background: #ebe3d7;
+    max-width: 1400px;
+}
+
+.eyebrow {
+    margin: 0 0 1rem;
+    color: var(--accent-dark);
+    font-family: var(--sans);
+    font-size: 0.78rem;
+    font-weight: bold;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+h1,
+h2,
+p {
+    max-width: 42rem;
+}
+
+h1 {
+    margin: 0;
+    font-size: clamp(3rem, 9vw, 7rem);
+    line-height: 0.95;
+    font-weight: normal;
+}
+
+h1 em {
+    color: var(--accent);
+    font-weight: normal;
+}
+
+.intro {
+    margin: 2rem 0;
+    color: var(--muted);
+    font-size: 1.25rem;
+    line-height: 1.6;
+}
+
+.hero-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.primary-button,
+.secondary-button {
+    align-items: center;
+    display: inline-flex;
+    gap: 1.5rem;
+    width: fit-content;
+    border-radius: 999px;
+    padding: 1rem 1.4rem;
+    color: #fff;
+    background: var(--accent);
+    font: bold 0.78rem var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.primary-button:hover,
+.secondary-button:hover {
+    background: var(--accent-dark);
+}
+
+.primary-button span {
+    font-size: 1.2rem;
+}
+
+.secondary-button {
+    background: transparent;
+    border: 1px solid var(--accent);
+    color: var(--accent);
+}
+
+.hero-art {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 28rem;
+    position: relative;
+}
+
+.bottle-cap {
+    height: 4rem;
+    width: 5.5rem;
+    border: 3px solid #7a5e4c;
+    border-bottom: 0;
+    background: #98745b;
+}
+
+.bottle {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    height: 16rem;
+    width: 12rem;
+    border: 3px solid #7a5e4c;
+    border-radius: 1rem 1rem 2.5rem 2.5rem;
+    background: rgba(232, 202, 157, 0.8);
+    box-shadow: 1.5rem 1.5rem 0 rgba(183, 93, 74, 0.15);
+}
+
+.bottle span {
+    border-top: 1px solid #7a5e4c;
+    border-bottom: 1px solid #7a5e4c;
+    padding: 1.2rem 0.5rem;
+    color: #7a5e4c;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+}
+
+.hero-art p {
+    margin: 1.3rem 0 0;
+    color: #7a5e4c;
+    font: 0.65rem var(--sans);
+    letter-spacing: 0.2em;
+}
+
+.feature-bar {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+    padding: 2rem max(2rem, 10vw);
+    background: var(--ink);
+    color: #f7f4ef;
+}
+
+.feature-bar div {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.feature-number {
+    color: var(--accent);
+    font: 0.8rem var(--sans);
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+}
+
+.feature-bar p {
+    margin: 0;
+    color: #e7e0d6;
+    font: 0.95rem var(--sans);
+}
+
+.collection {
+    padding: 7rem max(2rem, 10vw);
+}
+
+.section-heading {
+    align-items: end;
+    display: flex;
+    justify-content: space-between;
+    gap: 3rem;
+    margin-bottom: 3rem;
+}
+
+.section-heading > p {
+    color: var(--muted);
+    line-height: 1.6;
+}
+
+h2 {
+    margin: 0 0 1rem;
+    font-size: clamp(2rem, 5vw, 4rem);
+    font-weight: normal;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1.4rem;
+}
+
+.product-card {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 1.5rem;
+    background: rgba(255, 255, 255, 0.38);
+    border: 1px solid rgba(41, 37, 31, 0.06);
+}
+
+.product-placeholder {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+    aspect-ratio: 1 / 1.1;
+    margin-bottom: 1.4rem;
+    color: rgba(41, 37, 31, 0.5);
+    font-size: 3rem;
+    font-style: italic;
+}
+
+.product-card--rose .product-placeholder { background: #dfc0b7; }
+.product-card--sand .product-placeholder { background: #e3d2b5; }
+.product-card--olive .product-placeholder { background: #c4c8ad; }
+
+.product-status,
+.product-card > span {
+    color: var(--accent);
+    font: 0.68rem var(--sans);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.product-status {
+    margin: 0 0 0.6rem;
+    padding: 0 1.4rem;
+}
+
+.product-card h3 {
+    margin: 0 0 0.6rem;
+    padding: 0 1.4rem;
+    font-size: 1.3rem;
+    font-weight: normal;
+}
+
+.product-card > span {
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    padding: 0 1.4rem;
+}
+
+.product-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-top: 1.4rem;
+    padding: 0 1.4rem;
+}
+
+.product-meta strong {
+    font-family: var(--sans);
+    font-size: 1.2rem;
+    color: var(--ink);
+}
+
+.product-button {
+    margin: 0;
+    width: fit-content;
+}
+
+.manifesto {
+    padding: 7rem max(2rem, 10vw);
+    background: #29251f;
+    color: #f7f4ef;
+}
+
+.manifesto h2 {
+    max-width: 38rem;
+}
+
+.manifesto > p:last-child {
+    max-width: 30rem;
+    color: #c5bdb2;
+    font-size: 1.1rem;
+    line-height: 1.7;
+}
+
+.registration {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    padding: 7rem max(2rem, 10vw);
+    background: var(--highlight);
+}
+
+.registration-copy p:last-child {
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+.client-form {
+    display: grid;
+    gap: 1rem;
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(41, 37, 31, 0.08);
+    padding: 1.5rem;
+}
+
+.client-form label {
+    display: grid;
+    gap: 0.5rem;
+    color: var(--ink);
+    font: 0.8rem var(--sans);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.client-form input {
+    width: 100%;
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    padding: 0.9rem 1rem;
+    background: #fff;
+    color: var(--ink);
+}
+
+.form-message {
+    min-height: 1.2rem;
+    margin: 0;
+    color: var(--accent-dark);
+    font: 0.9rem var(--sans);
+}
+
+footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding: 2rem max(2rem, 7vw);
+    background: var(--paper);
+}
+
+.footer-branding,
+.footer-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.footer-branding p,
+.footer-contact a {
+    margin: 0;
+    color: var(--muted);
+    font: 0.8rem var(--sans);
+}
+
+.footer-contact a:hover {
+    color: var(--accent);
+}
+
+@media (max-width: 760px) {
+    .site-header {
+        flex-wrap: wrap;
+        gap: 0.8rem 1rem;
+    }
+
+    nav {
+        order: 3;
+        width: 100%;
+        justify-content: space-between;
+        gap: 0.8rem;
+        flex-wrap: wrap;
+    }
+
+    .hero,
+    .registration,
+    .feature-bar {
+        grid-template-columns: 1fr;
+    }
+
+    .hero {
+        padding-top: 3rem;
+    }
+
+    .section-heading,
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 700px) {
+    .site-header {
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+
+    nav {
+        order: 3;
+        justify-content: space-between;
+        width: 100%;
+        gap: 0.5rem;
+        font-size: 0.65rem;
+    }
+
+    .hero {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding-top: 4rem;
+    }
+
+    .hero-art {
+        min-height: 19rem;
+    }
+
+    .bottle {
+        height: 11rem;
+        width: 8rem;
+    }
+
+    .bottle-cap {
+        height: 2.5rem;
+        width: 4rem;
+    }
+
+    .section-heading,
+    footer {
+        align-items: start;
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+}
+/* Estilos corregidos para el botón de vaciar la bolsa */
+.clear-bag-button {
+    background-color: transparent;
+    color: #c05a46; /* El mismo tono terracota de tus botones */
+    border: 1px solid #c05a46; /* Borde fino a juego con el de Bolsa */
+    padding: 0; 
+    width: 110px; /* Ancho fijo para que no se estire */
+    height: 38px; /* La misma altura estilizada del botón Bolsa */
+    border-radius: 20px; /* Bordes redondeados idénticos */
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-left: 12px; /* Separación elegante */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Efecto al pasar el ratón por encima (Hover) */
+.clear-bag-button:hover {
+    background-color: #c05a46;
+    color: #ffffff;
+}
