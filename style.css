@@ -684,4 +684,91 @@ footer {
   gap: 10px;
   margin: 0 15px;
 }
+/* --- UNIFICACIÓN Y REDISEÑO DE LA BARRA DE NAVEGACIÓN --- */
+
+/* 1. Contenedor principal del encabezado */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: #f4ece1; /* Manteniendo tu color de fondo */
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+/* 2. Enlaces de navegación */
+.site-header nav a {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #111;
+  margin: 0 10px;
+  font-weight: 500;
+}
+
+/* 3. Contenedor del Usuario (Mensaje + Botón) */
+#contenedor-usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+#nombre-usuario-pantalla {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #111;
+}
+
+/* 4. Estilo Unificado para TODOS los botones del Header (Login, Cerrar Sesión, Vaciar Bolsa) */
+#btn-abrir-login, 
+#btn-cerrar-sesion, 
+.clear-bag-button {
+  background-color: transparent !important;
+  color: #111111 !important;
+  border: 1px solid #111111 !important;
+  padding: 8px 16px !important;
+  font-size: 0.75rem !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+  border-radius: 4px !important; /* Bordes suaves que no rompen el texto */
+  cursor: pointer;
+  transition: all 0.2s ease-on-out;
+  white-space: nowrap; /* Evita que el texto se parta en dos líneas */
+  display: inline-block;
+  height: auto !important;
+  width: auto !important;
+}
+
+/* Efecto Hover para los tres botones */
+#btn-abrir-login:hover, 
+#btn-cerrar-sesion:hover, 
+.clear-bag-button:hover {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+}
+
+/* 5. Estilo para el botón principal de la Bolsa */
+.bag-button {
+  background-color: #111111;
+  color: #ffffff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+}
+
+.bag-button:hover {
+  background-color: #333333;
+}
 
