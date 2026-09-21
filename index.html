@@ -16,6 +16,20 @@
             <a href="#registro">Registro</a>
             <a href="#contacto">Contacto</a>
         </nav>
+              <!-- Contenedor del estado de usuario -->
+      <div id="contenedor-usuario">
+        <!-- Estado Desconectado -->
+        <div id="usuario-desconectado">
+          <button id="btn-abrir-login" onclick="mostrarModalLogin()">Iniciar Sesión</button>
+        </div>
+
+        <!-- Estado Conectado (Oculto por defecto) -->
+        <div id="usuario-conectado" style="display: none;">
+          <span id="nombre-usuario-pantalla">¡Bienvenido!</span>
+          <button id="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
+        </div>
+      </div>
+
         <button class="bag-button" type="button" aria-label="Abrir bolsa de compra">
             Bolsa <span id="bag-count">0</span>
         </button>
@@ -155,5 +169,18 @@
         };
     </script>
     <script src="script.js"></script>
+</body>
+  <!-- Modal / Ventana Emergente de Iniciar Sesión -->
+  <div id="modal-login" class="modal" style="display: none;">
+    <div class="modal-contenido">
+      <span class="cerrar" onclick="cerrarModalLogin()">&times;</span>
+      <h3>Iniciar Sesión</h3>
+      <form id="form-login" onsubmit="procesarLogin(event)">
+        <input type="email" id="login-email" placeholder="Correo Electrónico" required>
+        <input type="password" id="login-password" placeholder="Contraseña" required>
+        <button type="submit">Entrar</button>
+      </form>
+    </div>
+  </div>
 </body>
 </html>

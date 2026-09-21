@@ -166,3 +166,112 @@ if (clearBagButton) {
     });
 }
 
+// --- CONFIGURACIÓN DE LOGIN Y SESIONES EN DUBAI ESSENCES ---
+
+// Ejecutar inmediatamente cuando la página cargue para verificar si hay sesión activa
+document.addEventListener("DOMContentLoaded", () => {
+    verificarSesionActiva();
+
+    // Vincular tu formulario de registro actual (#client-form)
+    const formRegistro = document.getElementById("client-form");
+    if (formRegistro) {
+        formRegistro.addEventListener("submit", procesarRegistro);
+    }
+});
+
+// 1. Modificar la función de Registro para que inicie sesión automáticamente
+function procesarRegistro(event) {
+    event.preventDefault(); // Detener el envío clásico de la página
+
+    // Capturar datos usando los nombres de tus inputs actuales
+    const form = event.target;
+    const nombre = form.querySelector('[name="name"]').value;
+    const email = form.querySelector('[name="email"]').value;
+    const telefono = form.querySelector('[name="phone"]').value;
+    const password = form.querySelector('[name="password"]').value;
+    const formMessage = document.getElementById("form-message");
+
+    // Guardar los datos en el navegador simulando una base de datos local
+    const datosUsuario = { nombre, email, telefono, password };
+    localStorage.setItem(email, JSON.stringify(datosUsuario));
+    
+    // Iniciar la sesión marcando a este usuario como "logueado"
+    localStorage.setItem("usuarioLogueado", JSON.stringify(datosUsuario));
+
+    // Mostrar mensaje de éxito en tu etiqueta actual de mensajes
+    if (formMessage) {
+        formMessage.textContent = "¡Usuario registrado e inicio de sesión exitoso!";
+        formMessage.style.color = "green";
+    }
+
+    form.reset(); // Limpiar el formulario
+    verificarSesionActiva(); // Actualizar la pantalla de inmediato
+}
+
+// 2. Proceso de Login para clientes que regresan
+function procesarLogin(event) {
+    event.preventDefault();
+
+    const email = document.getElementById("login-email").value;
+    // Busquemos el input de contraseña que agregaste en el modal
+    const password = document.querySelector('#form-login input[type="password"]').value;
+
+    // Buscar si el correo existe en nuestro almacenamiento local
+    const usuarioRegistrado = localStorage.getItem(email);
+
+    if (usuarioRegistrado) {
+        const datos = JSON.parse(usuarioRegistrado);
+
+        // Validar si la contraseña introducida coincide con la guardada
+        if (datos.password === password) {
+            localStorage.setItem("usuarioLogueado", JSON.stringify(datos));
+            alert(`¡Bienvenido de nuevo, ${datos.nombre}!`);
+            cerrarModalLogin();
+            verificarSesionActiva(); // Cambia la barra de navegación
+        } else {
+            alert("Contraseña incorrecta. Por favor, vuelve a intentarlo.");
+        }
+    } else {
+        alert("Este correo electrónico no está registrado.");
+    }
+}
+
+// 3. Función inteligente que cambia la interfaz (Muestra el nombre o los botones)
+function verificarSesionActiva() {
+    const usuarioLogueado = localStorage.getItem("usuarioLogueado");
+    const divDesconectado = document.getElementById("usuario-desconectado");
+    const divConectado = document.getElementById("usuario-conectado");
+    const textoNombre = document.getElementById("nombre-usuario-pantalla");
+
+    if (usuarioLogueado) {
+        const datos = JSON.parse(usuarioLogueado);
+        if (divDesconectado && divConectado && textoNombre) {
+            divDesconectado.style.display = "none";
+            divConectado.style.display = "inline-block";
+            textoNombre.innerText = `¡Bienvenido, ${datos.nombre}! ✨ `;
+        }
+    } else {
+        if (divDesconectado && divConectado) {
+            divDesconectado.style.display = "inline-block";
+            divConectado.style.display = "none";
+        }
+    }
+}
+
+// 4. Cerrar Sesión de usuario
+function cerrarSesion() {
+    localStorage.removeItem("usuarioLogueado"); // Borrar la sesión activa
+    alert("Has cerrado sesión.");
+    verificarSesionActiva(); // Restablecer botones normales en pantalla
+}
+
+// 5. Controladores para abrir y cerrar el Modal flotante de Login
+function mostrarModalLogin() {
+    const modal = document.getElementById("modal-login");
+    if (modal) modal.style.display = "flex";
+}
+
+function cerrarModalLogin() {
+    const modal = document.getElementById("modal-login");
+    if (modal) modal.style.display = "none";
+}
