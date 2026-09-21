@@ -275,3 +275,32 @@ function cerrarModalLogin() {
     const modal = document.getElementById("modal-login");
     if (modal) modal.style.display = "none";
 }
+// --- INTERACTIVIDAD DEL MENÚ HAMBURGUESA DE DUBAI ESSENCES ---
+
+document.addEventListener("DOMContentLoaded", () => {
+    const btnHamburguesa = document.getElementById("btn-hamburguesa");
+    const btnCerrarMenu = document.getElementById("btn-cerrar-menu");
+    const menuPrincipal = document.getElementById("menu-principal");
+
+    // Abrir el menú lateral al hacer clic en las 3 líneas
+    if (btnHamburguesa && menuPrincipal) {
+        btnHamburguesa.addEventListener("click", () => {
+            menuPrincipal.classList.add("activo");
+        });
+    }
+
+    // Cerrar el menú lateral al hacer clic en la "X"
+    if (btnCerrarMenu && menuPrincipal) {
+        btnCerrarMenu.addEventListener("click", () => {
+            menuPrincipal.classList.remove("activo");
+        });
+    }
+});
+
+// Función para cerrar el menú automáticamente al hacer clic en una sección
+function cerrarMenu() {
+    const menuPrincipal = document.getElementById("menu-principal");
+    if (menuPrincipal) {
+        menuPrincipal.classList.remove("activo");
+    }
+}
