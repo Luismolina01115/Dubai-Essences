@@ -278,14 +278,37 @@ function cerrarModalLogin() {
 // --- LÓGICA INTELIGENTE DE APERTURA Y CIERRE (TOGGLE) ---
 document.addEventListener("DOMContentLoaded", () => {
     const btnHamburguesa = document.getElementById("btn-hamburguesa");
+    const btnMenuInferior = document.getElementById("bottom-btn-hamburguesa");
     const menuPrincipal = document.getElementById("menu-principal");
 
-    if (btnHamburguesa && menuPrincipal) {
-        btnHamburguesa.addEventListener("click", (event) => {
-            event.stopPropagation(); // Evita que el clic se confunda con el resto de la página
-            menuPrincipal.classList.toggle("activo"); // Abre si está cerrado, cierra si está abierto
-        });
+     // Función genérica para abrir y cerrar alternando
+    const toggleMenu = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
+        if (menuPrincipal) {
+            menuPrincipal.classList.toggle("activo");
+        }
+    };
+
+    // Escuchar el clic en las 3 líneas de arriba
+    if (btnHamburguesa) {
+        btnHamburguesa.addEventListener("click", toggleMenu);
     }
+
+    // Escuchar el clic en el botón de Menú de abajo (móvil)
+    if (btnMenuInferior) {
+        btnMenuInferior.addEventListener("click", toggleMenu);
+    }
+// Cerrar el menú si hacen clic en cualquier otra parte de la pantalla
+
+   document.addEventListener("click", (event) => {
+        if (menuPrincipal && menuPrincipal.classList.contains("activo")) {
+            if (!menuPrincipal.contains(event.target) && event.target !== btnHamburguesa && event.target !== btnMenuInferior) {
+                menuPrincipal.classList.remove("activo");
+            }
+        }
+    });
+});
 
     // EXTRA: Si hacen clic en cualquier parte fuera del menú, este se cerrará solo
     document.addEventListener("click", (event) => {
@@ -295,9 +318,8 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         }
     });
-});
 
-// Función para cerrar el menú automáticamente al hacer clic en un enlace de sección
+// Función para cerrar automáticamente tras pulsar una sección
 function cerrarMenu() {
     const menuPrincipal = document.getElementById("menu-principal");
     if (menuPrincipal) {
