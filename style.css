@@ -1259,17 +1259,21 @@ html, body {
   }
 
   /* 3. ADAPTACIÓN DEL MENÚ DESPLEGABLE EN MÓVIL */
+   /* 3. ADAPTACIÓN CORRECTA DEL MENÚ DESPLEGABLE EN MÓVIL */
   .nav-principal {
-    position: fixed !important;
-    top: auto !important;
-    bottom: 60px !important; /* Aparece justo ARRIBA de la barra inferior */
-    right: 15px !important;
+    position: absolute !important;
+    top: 55px !important; /* Ahora cae limpiamente hacia ABAJO de la barra superior */
+    bottom: auto !important; /* Desactivamos el bloqueo de abajo */
+    right: 20px !important;
+    left: auto !important;
     width: 220px !important;
     background-color: #f4ece1;
     border: 1px solid #111111;
     border-radius: 4px;
     padding: 20px !important;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
   }
+
 }
 
 
