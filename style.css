@@ -1399,6 +1399,23 @@ html, body {
   100% { opacity: 0.8; }
 }
 
+/* --- PARCHE ESTRICTO PARA LOGRAR CABECERA FIJA MÓVIL --- */
+
+/* 1. Desbloquear los contenedores principales para permitir el scroll pegajoso */
+html, body {
+  overflow-x: hidden !important;
+  overflow-y: visible !important; /* Libera el movimiento vertical */
+}
+
+/* 2. Forzar al encabezado a clavarse en el techo */
+.site-header {
+  position: -webkit-sticky !important; /* Soporte extra para navegadores de celular (Safari/Chrome móvil) */
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 9999 !important; /* Lo pone por encima de absolutamente todo al bajar */
+}
+
+
 
 
 
