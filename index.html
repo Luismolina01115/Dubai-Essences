@@ -8,34 +8,16 @@
     <title>Dubai Essences</title>
 </head>
 <body>
-       <header class="site-header">
-        <!-- Logo de la marca -->
+          <header class="site-header">
+        <!-- Contenedor alineado -->
         <a class="brand" href="#inicio">Dubai Essences</a>
         
-        <!-- Botón Hamburguesa (Las 3 líneas elegantes) -->
-        <button id="btn-hamburguesa" class="hamburguesa-button" aria-label="Abrir menú">
-            <span></span>
-            <span></span>
-            <span></span>
-        </button>
-
-        <!-- MENÚ DESLIZANTE (Aquí se mudaron todos los textos informativos) -->
-        <nav id="menu-principal" class="nav-principal" aria-label="Menú desplegable">
-            <button id="btn-cerrar-menu" class="cerrar-menu-button">&times;</button>
-            <a href="#inicio" onclick="cerrarMenu()">Inicio</a>
-            <a href="#coleccion" onclick="cerrarMenu()">Colección / Catálogo</a>
-            <a href="#registro" onclick="cerrarMenu()">Registro</a>
-            <a href="#nosotros" onclick="cerrarMenu()">Nuestra historia</a>
-            <a href="#contacto" onclick="cerrarMenu()">Contacto</a>
-        </nav>
-
-        <!-- ACCIONES COMPLEMENTARIAS FIJAS EN LA BARRA -->
+        <!-- Las acciones derechas de la barra -->
         <div class="header-actions">
-            <!-- Contenedor del estado de usuario (Login / Bienvenida) -->
+            <!-- Bloque de usuario (En móvil se ocultará para que no estorbe) -->
             <div id="contenedor-usuario">
                 <div id="usuario-desconectado">
                     <button id="btn-abrir-login" onclick="mostrarModalLogin()">Iniciar Sesión</button>
-                    <!-- Añadimos el botón de registrarse directo en la barra como querías -->
                     <button id="btn-barra-registro" onclick="window.location.href='#registro'">Registrarse</button>
                 </div>
                 <div id="usuario-conectado" style="display: none;">
@@ -44,13 +26,49 @@
                 </div>
             </div>
 
-            <!-- Botones de la Bolsa de compra -->
+            <!-- Bolsa de compras -->
             <button class="bag-button" type="button" aria-label="Abrir bolsa de compra">
                 Bolsa <span id="bag-count">0</span>
             </button>
             <button id="clear-bag-button" class="clear-bag-button" type="button" aria-label="Vaciar bolsa de compra" style="display: none;">Vaciar bolsa</button>
+            
+            <!-- Botón Hamburguesa clásico -->
+            <button id="btn-hamburguesa" class="hamburguesa-button" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+
+        <!-- Menú desplegable tradicional debajo de la cabecera -->
+        <nav id="menu-principal" class="nav-principal" aria-label="Menú desplegable">
+            <a href="#inicio" onclick="cerrarMenu()">Inicio</a>
+            <a href="#coleccion" onclick="cerrarMenu()">Colección / Catálogo</a>
+            <a href="#registro" onclick="cerrarMenu()">Registro de Clientes</a>
+            <a href="#nosotros" onclick="cerrarMenu()">Nuestra historia</a>
+            <a href="#contacto" onclick="cerrarMenu()">Contacto</a>
+        </nav>
     </header>
+
+    <!-- NUEVA BARRA DE MENÚ FIJA ABAJO (Solo se activa en celulares, igual que Primor) -->
+    <nav class="mobile-bottom-nav">
+        <a href="#inicio" class="bottom-nav-item">
+            <span class="nav-icon">🏠</span>
+            <span class="nav-label">Home</span>
+        </a>
+        <a href="#coleccion" class="bottom-nav-item">
+            <span class="nav-icon">✨</span>
+            <span class="nav-label">Colección</span>
+        </a>
+        <a href="#" class="bottom-nav-item" id="bottom-btn-hamburguesa">
+            <span class="nav-icon">☰</span>
+            <span class="nav-label">Menú</span>
+        </a>
+        <a href="#" onclick="mostrarModalLogin()" class="bottom-nav-item">
+            <span class="nav-icon">👤</span>
+            <span class="nav-label">Cuenta</span>
+        </a>
+    </nav>
 
     <main>
         <section class="hero" id="inicio">

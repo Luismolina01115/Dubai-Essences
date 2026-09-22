@@ -1184,6 +1184,93 @@ html, body {
     padding: 20px !important;
   }
 }
+/* ==========================================================================
+   DISEÑO MÓVIL ADAPTADO AL ESTILO DE LA APP DE PRIMOR
+   ========================================================================== */
+
+/* Por defecto en pantallas de ordenador ocultamos la barra inferior */
+.mobile-bottom-nav {
+  display: none;
+}
+
+/* REGLAS EXCLUSIVAS PARA CELULARES */
+@media (max-width: 768px) {
+  
+  /* 1. Limpieza estricta de la cabecera superior */
+  .site-header {
+    display: flex !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+    padding: 12px 20px !important;
+    position: sticky !important; /* Se queda fija arriba al bajar */
+    top: 0;
+    z-index: 1000;
+  }
+
+  /* Ocultamos los botones con texto largo de la barra superior en móviles */
+  #contenedor-usuario {
+    display: none !important;
+  }
+
+  /* Compactamos la bolsa */
+  .bag-button {
+    padding: 6px 10px !important;
+    font-size: 0.65rem !important;
+  }
+  .clear-bag-button {
+    display: none !important; /* Escondemos el botón de vaciar en la barra móvil */
+  }
+
+  /* 2. CREACIÓN DE LA BARRA INFERIOR ESTILO PRIMOR */
+  .mobile-bottom-nav {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff; /* Fondo blanco limpio */
+    border-top: 1px solid #eeeeee;
+    justify-content: space-around;
+    align-items: center;
+    z-index: 2500; /* Siempre por encima de todo */
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+  }
+
+  .bottom-nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-decoration: none;
+    color: #555555;
+    font-family: inherit;
+  }
+
+  .nav-icon {
+    font-size: 1.2rem;
+    margin-bottom: 2px;
+  }
+
+  .nav-label {
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 500;
+  }
+
+  /* 3. ADAPTACIÓN DEL MENÚ DESPLEGABLE EN MÓVIL */
+  .nav-principal {
+    position: fixed !important;
+    top: auto !important;
+    bottom: 60px !important; /* Aparece justo ARRIBA de la barra inferior */
+    right: 15px !important;
+    width: 220px !important;
+    background-color: #f4ece1;
+    border: 1px solid #111111;
+    border-radius: 4px;
+    padding: 20px !important;
+  }
+}
 
 
 
