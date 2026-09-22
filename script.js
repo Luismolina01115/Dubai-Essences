@@ -275,29 +275,29 @@ function cerrarModalLogin() {
     const modal = document.getElementById("modal-login");
     if (modal) modal.style.display = "none";
 }
-// --- INTERACTIVIDAD DEL MENÚ HAMBURGUESA DE DUBAI ESSENCES ---
-
+// --- LÓGICA INTELIGENTE DE APERTURA Y CIERRE (TOGGLE) ---
 document.addEventListener("DOMContentLoaded", () => {
     const btnHamburguesa = document.getElementById("btn-hamburguesa");
-    const btnCerrarMenu = document.getElementById("btn-cerrar-menu");
     const menuPrincipal = document.getElementById("menu-principal");
 
-    // Abrir el menú lateral al hacer clic en las 3 líneas
     if (btnHamburguesa && menuPrincipal) {
-        btnHamburguesa.addEventListener("click", () => {
-            menuPrincipal.classList.add("activo");
+        btnHamburguesa.addEventListener("click", (event) => {
+            event.stopPropagation(); // Evita que el clic se confunda con el resto de la página
+            menuPrincipal.classList.toggle("activo"); // Abre si está cerrado, cierra si está abierto
         });
     }
 
-    // Cerrar el menú lateral al hacer clic en la "X"
-    if (btnCerrarMenu && menuPrincipal) {
-        btnCerrarMenu.addEventListener("click", () => {
-            menuPrincipal.classList.remove("activo");
-        });
-    }
+    // EXTRA: Si hacen clic en cualquier parte fuera del menú, este se cerrará solo
+    document.addEventListener("click", (event) => {
+        if (menuPrincipal && menuPrincipal.classList.contains("activo")) {
+            if (!menuPrincipal.contains(event.target) && event.target !== btnHamburguesa) {
+                menuPrincipal.classList.remove("activo");
+            }
+        }
+    });
 });
 
-// Función para cerrar el menú automáticamente al hacer clic en una sección
+// Función para cerrar el menú automáticamente al hacer clic en un enlace de sección
 function cerrarMenu() {
     const menuPrincipal = document.getElementById("menu-principal");
     if (menuPrincipal) {

@@ -914,6 +914,196 @@ html, body {
   right: 0 !important;
   box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15); /* La sombra solo aparece cuando el menú está abierto */
 }
+/* --- MENÚ DESPLEGABLE VERTICAL (DEBAJO DEL BOTÓN HAMBURGUESA) --- */
+
+/* 1. Posicionamos la cabecera de forma relativa para poder guiar al menú */
+.site-header {
+  position: relative;
+}
+
+/* 2. Transformamos el menú en una cajita flotante debajo del botón */
+.nav-principal {
+  position: absolute !important;
+  top: 100%; /* Se coloca justo abajo de la barra del header */
+  right: 20px; /* Alineado a la derecha, cerca de su botón */
+  width: 220px; /* Un ancho más compacto y elegante */
+  height: auto !important; /* Ya no ocupa toda la pantalla alta */
+  background-color: #f4ece1; /* El color crema de tu marca */
+  border: 1px solid #111111;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+  z-index: 2000;
+  
+  /* Efecto de desvanecido hacia arriba al estar oculto */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/* 3. Cuando se activa con JavaScript, se vuelve visible y cae en su lugar */
+.nav-principal.activo {
+  right: 20px !important;
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* 4. Enlaces dentro del menú flotante */
+.nav-principal a {
+  font-size: 0.85rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #111111;
+  font-weight: 500;
+  padding: 5px 0;
+  border-bottom: none !important; /* Quitamos la línea divisoria larga */
+  display: block;
+  transition: color 0.2s ease;
+}
+
+.nav-principal a:hover {
+  color: #666666;
+  padding-left: 5px; /* Pequeño efecto al pasar el mouse */
+}
+
+/* 5. Ya no necesitamos el botón "X" gigante de cerrar, lo ocultamos */
+.cerrar-menu-button {
+  display: none !important;
+}
+/* --- REACOMODO DE POSICIONES PARA EL MENÚ DESPLEGABLE --- */
+
+/* Forzamos a que el botón se posicione de forma independiente en la barra */
+.hamburguesa-button {
+  order: 3; /* Esto lo empuja hacia la derecha junto a los otros botones */
+  margin-left: 15px; /* Separa un poco el botón de los demás elementos */
+}
+
+/* Ajustamos la caja flotante para que se guíe con el botón de 3 líneas */
+.nav-principal {
+  position: absolute !important;
+  top: 80px; /* Ajusta este número según el alto real de tu header */
+  right: 40px !important; /* Alineado al margen derecho de la pantalla */
+  width: 240px;
+  height: auto !important;
+  background-color: #f4ece1;
+  border: 1px solid #111111;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+  gap: 15px;
+  z-index: 2000;
+  
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-10px);
+  transition: all 0.3s ease;
+}
+
+/* Cuando se activa, cae en su lugar de forma perfecta */
+.nav-principal.activo {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* Ocultar definitivamente el botón X antiguo */
+.cerrar-menu-button {
+  display: none !important;
+}
+/* --- AJUSTE DE TAMAÑO Y ALINEACIÓN DE BOTONES EN CABECERA --- */
+
+/* 1. Forzar que los botones de usuario se coloquen uno al lado del otro */
+#usuario-desconectado {
+  display: flex !important;
+  flex-direction: row !important; /* Lado a lado, no arriba y abajo */
+  gap: 10px !important; /* Espacio elegante entre ellos */
+  align-items: center !important;
+}
+
+/* 2. Hacer los botones más compactos, estilizados y del mismo tamaño */
+#btn-abrir-login,
+#btn-barra-registro,
+#btn-cerrar-sesion,
+.clear-bag-button,
+.bag-button {
+  padding: 6px 14px !important; /* Reducimos la altura y el ancho interno */
+  font-size: 0.7rem !important; /* Letra un poco más pequeña y delicada */
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+  border-radius: 3px !important; /* Bordes rectos y limpios */
+  white-space: nowrap !important; /* Evita que las palabras se partan */
+  height: auto !important;
+  display: inline-block !important;
+}
+
+/* 3. Asegurar que todo el header se alinee de forma impecable en el centro horizontal */
+.site-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 15px 30px !important;
+}
+/* --- ANIMACIÓN ELEGANTE PARA EL MENÚ DESPLEGABLE --- */
+
+/* 1. Estado inicial del menú (Oculto, un poco más arriba y transparente) */
+.nav-principal {
+  position: absolute !important;
+  top: 100%; /* Justo debajo de la barra */
+  right: 30px;
+  width: 220px;
+  background-color: #f4ece1;
+  border: 1px solid #111111;
+  border-radius: 4px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08); /* Sombra más suave y difuminada */
+  display: flex;
+  flex-direction: column;
+  padding: 22px;
+  gap: 14px;
+  z-index: 2000;
+  
+  /* ESTO HACE LA MAGIA: Totalmente invisible y 15 píxeles más arriba */
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-15px);
+  
+  /* Transición suave para cada propiedad al mismo tiempo */
+  transition: opacity 0.35s ease, transform 0.35s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.35s;
+}
+
+/* 2. Estado activo (Cuando se presiona el botón, se desvanece y cae a su posición) */
+.nav-principal.activo {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: translateY(0) !important; /* Cae suavemente a su lugar original */
+}
+
+/* 3. Estilo de las opciones dentro del menú */
+.nav-principal a {
+  font-size: 0.8rem !important;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  color: #111111;
+  font-weight: 500;
+  transition: color 0.2s ease, padding-left 0.2s ease;
+}
+
+/* Pequeño efecto elegante: el texto se mueve un milímetro a la derecha al pasar el mouse */
+.nav-principal a:hover {
+  color: #666666;
+  padding-left: 4px;
+}
+
+
 
 
 
