@@ -877,5 +877,43 @@ footer {
   background-color: #333333;
   border-color: #333333;
 }
+/* --- CORRECCIÓN DE OCULTAMIENTO DEL MENÚ LATERAL --- */
+
+/* Evita que la página tenga un desplazamiento horizontal feo */
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+  position: relative;
+}
+
+/* Forzar que el encabezado no empuje el menú hacia adentro */
+.site-header {
+  position: relative;
+}
+
+/* Ajuste estricto para el menú lateral oculto */
+.nav-principal {
+  position: fixed !important;
+  top: 0;
+  right: -320px !important; /* Lo empuja completamente hacia afuera (un poco más del ancho del menú) */
+  width: 280px;
+  height: 100vh;
+  background-color: #f4ece1;
+  box-shadow: none; /* Quitamos la sombra mientras esté oculto para que no se note */
+  display: flex;
+  flex-direction: column;
+  padding: 80px 30px;
+  gap: 20px;
+  z-index: 2000; /* Asegura que quede por encima de todo */
+  transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.4s ease;
+  box-sizing: border-box;
+}
+
+/* Cuando se le agrega la clase 'activo' con JavaScript, entra a la pantalla */
+.nav-principal.activo {
+  right: 0 !important;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.15); /* La sombra solo aparece cuando el menú está abierto */
+}
+
 
 
