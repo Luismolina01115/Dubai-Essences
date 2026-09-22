@@ -1399,20 +1399,22 @@ html, body {
   100% { opacity: 0.8; }
 }
 
-/* --- PARCHE ESTRICTO PARA LOGRAR CABECERA FIJA MÓVIL --- */
+/* --- ENMASCARAMIENTO DEFENSIVO CONTRA EL BLOQUEO DE NETLIFY --- */
 
-/* 1. Desbloquear los contenedores principales para permitir el scroll pegajoso */
+/* Forzamos el uso de clip en lugar de hidden en los contenedores raíz */
 html, body {
-  overflow-x: hidden !important;
-  overflow-y: visible !important; /* Libera el movimiento vertical */
+  overflow-x: clip !important; /* Evita desbordes de pantalla sin romper el sticky navbar */
+  overflow-y: visible !important;
+  position: relative !important;
+  height: auto !important;
 }
 
-/* 2. Forzar al encabezado a clavarse en el techo */
+/* Forzado estricto del encabezado flotante */
 .site-header {
-  position: -webkit-sticky !important; /* Soporte extra para navegadores de celular (Safari/Chrome móvil) */
+  position: -webkit-sticky !important; /* Soporte nativo para motores Safari/Chrome móvil */
   position: sticky !important;
   top: 0 !important;
-  z-index: 9999 !important; /* Lo pone por encima de absolutamente todo al bajar */
+  z-index: 9999 !important; /* Se impone sobre cualquier banner o imagen al bajar */
 }
 
 
