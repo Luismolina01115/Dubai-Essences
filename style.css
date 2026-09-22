@@ -1273,7 +1273,130 @@ html, body {
     padding: 20px !important;
     box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
   }
+}
 
+
+/* ==========================================================================
+   NUEVO LOGO BOUTIQUE, BUSCADOR FIJO Y EFECTO STICKY
+   ========================================================================== */
+
+/* 1. Estructura general de la cabecera en niveles y fija en el techo */
+.site-header {
+  background-color: #f4ece1; /* Tu color crema corporativo */
+  padding: 15px 0 20px 0 !important;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: sticky !important; /* Mantiene la barra fija al hacer scroll */
+  top: 0 !important; /* Se congela exactamente en el borde superior */
+  z-index: 2000 !important; /* Pasa por encima de las fotos sin taparse */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Sombra sutil que da efecto flotante */
+}
+
+.header-top-row {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: center !important;
+  padding: 0 30px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+/* 2. Diseño del Logotipo de Lujo (✦ DUBAI ESSENCES) */
+.brand-logo {
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 8px !important;
+  text-decoration: none !important;
+  color: #111111 !important;
+}
+
+.logo-icon {
+  font-size: 1.3rem !important;
+  color: #b85a3a !important; /* Tono terracota elegante para el icono */
+  animation: pulsoSutil 3s ease-in-out infinite !important;
+}
+
+.logo-text {
+  font-family: "Playfair Display", serif, sans-serif !important; /* Tipografía premium */
+  font-size: 1.4rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 2px !important;
+}
+
+/* 3. Fila del Buscador (Centrado justo debajo) */
+.header-search-row {
+  display: flex !important;
+  justify-content: center !important;
+  padding: 15px 30px 0 30px !important;
+  width: 100% !important;
+  box-sizing: border-box !important;
+}
+
+.search-form {
+  width: 100% !important;
+  max-width: 600px !important; /* Ancho idóneo para la lectura */
+}
+
+.search-input-wrapper {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+}
+
+.search-icon {
+  position: absolute !important;
+  left: 15px !important;
+  font-size: 0.9rem !important;
+  color: #888888 !important;
+}
+
+#search-input {
+  width: 100% !important;
+  padding: 10px 15px 10px 40px !important;
+  font-size: 0.85rem !important;
+  background-color: #ffffff !important;
+  color: #111111 !important;
+  border: 1px solid #cccccc !important;
+  border-radius: 25px !important; /* Bordes redondeados elegantes */
+  outline: none !important;
+  transition: all 0.3s ease !important;
+  box-sizing: border-box !important;
+}
+
+#search-input:focus {
+  border-color: #111111 !important;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Asegurar que el menú flotante se guíe de forma correcta con la barra fija */
+.nav-principal {
+  position: absolute !important;
+  top: 100% !important; /* Cae siempre justo debajo de la cabecera */
+  right: 30px !important;
+}
+
+/* 📱 Ajustes especiales Responsive para Celulares */
+@media (max-width: 768px) {
+  .logo-text {
+    font-size: 1.1rem !important;
+    letter-spacing: 1px !important;
+  }
+  .header-search-row {
+    padding: 12px 20px 0 20px !important;
+  }
+  #search-input {
+    padding: 8px 15px 8px 35px !important;
+    font-size: 0.8rem !important;
+  }
+  .site-header {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06) !important;
+  }
+}
+
+@keyframes pulsoSutil {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; transform: scale(1.05); }
+  100% { opacity: 0.8; }
 }
 
 

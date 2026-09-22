@@ -8,39 +8,52 @@
     <title>Dubai Essences</title>
 </head>
 <body>
-          <header class="site-header">
-        <!-- Contenedor alineado -->
-        <a class="brand" href="#inicio">Dubai Essences</a>
-        
-        <!-- Las acciones derechas de la barra -->
-        <div class="header-actions">
-            <!-- Bloque de usuario (En móvil se ocultará para que no estorbe) -->
-            <div id="contenedor-usuario">
-                <div id="usuario-desconectado">
-                    <button id="btn-abrir-login" onclick="mostrarModalLogin()">Iniciar Sesión</button>
-                    <button id="btn-barra-registro" onclick="window.location.href='#registro'">Registrarse</button>
-                </div>
-                <div id="usuario-conectado" style="display: none;">
-                    <span id="nombre-usuario-pantalla">¡Bienvenido!</span>
-                    <button id="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
-                </div>
-            </div>
-
-            <!-- Bolsa de compras -->
-            <button class="bag-button" type="button" aria-label="Abrir bolsa de compra">
-                Bolsa <span id="bag-count">0</span>
-            </button>
-            <button id="clear-bag-button" class="clear-bag-button" type="button" aria-label="Vaciar bolsa de compra" style="display: none;">Vaciar bolsa</button>
+           <header class="site-header">
+        <!-- FILA 1: Logotipo y Acciones de Usuario -->
+        <div class="header-top-row">
+            <!-- Izquierda: Logotipo Rediseñado de Autor -->
+            <a class="brand-logo" href="#inicio">
+                <span class="logo-icon">✦</span>
+                <span class="logo-text">Dubai Essences</span>
+            </a>
             
-            <!-- Botón Hamburguesa clásico -->
-            <button id="btn-hamburguesa" class="hamburguesa-button" aria-label="Abrir menú">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
+            <!-- Derecha: Acciones y Bolsa -->
+            <div class="header-actions">
+                <div id="contenedor-usuario">
+                    <div id="usuario-desconectado">
+                        <button id="btn-abrir-login" onclick="mostrarModalLogin()">Iniciar Sesión</button>
+                        <button id="btn-barra-registro" onclick="window.location.href='#registro'">Registrarse</button>
+                    </div>
+                    <div id="usuario-connected" style="display: none;">
+                        <span id="nombre-usuario-pantalla">¡Bienvenido!</span>
+                        <button id="btn-cerrar-sesion" onclick="cerrarSesion()">Cerrar Sesión</button>
+                    </div>
+                </div>
+
+                <button class="bag-button" type="button" aria-label="Abrir bolsa de compra">
+                    Bolsa <span id="bag-count">0</span>
+                </button>
+                <button id="clear-bag-button" class="clear-bag-button" type="button" aria-label="Vaciar bolsa de compra" style="display: none;">Vaciar bolsa</button>
+                
+                <button id="btn-hamburguesa" class="hamburguesa-button" aria-label="Abrir menú">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
         </div>
 
-        <!-- Menú desplegable tradicional debajo de la cabecera -->
+        <!-- FILA 2: El Buscador Elegante (Justo debajo) -->
+        <div class="header-search-row">
+            <form class="search-form" onsubmit="event.preventDefault();">
+                <div class="search-input-wrapper">
+                    <span class="search-icon">🔍</span>
+                    <input type="search" id="search-input" placeholder="Buscar fragancias, notas olfativas, marcas..." aria-label="Buscar productos">
+                </div>
+            </form>
+        </div>
+
+        <!-- Menú desplegable lateral/vertical oculto -->
         <nav id="menu-principal" class="nav-principal" aria-label="Menú desplegable">
             <a href="#inicio" onclick="cerrarMenu()">Inicio</a>
             <a href="#coleccion" onclick="cerrarMenu()">Colección / Catálogo</a>
