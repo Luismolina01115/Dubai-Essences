@@ -1102,6 +1102,88 @@ html, body {
   color: #666666;
   padding-left: 4px;
 }
+/* --- TOQUES FINALES DE SIMETRÍA PARA ORDENADOR --- */
+
+#btn-abrir-login, 
+#btn-barra-registro, 
+.clear-bag-button {
+  height: 36px !important; /* Forzamos a que todos tengan exactamente la misma altura */
+  line-height: 22px !important; /* Centra el texto verticalmente dentro del botón */
+  box-sizing: border-box !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+/* Dejar el botón de registrarse de la barra con fondo transparente para que no compita tanto con la Bolsa */
+#btn-barra-registro {
+  background-color: transparent !important;
+  color: #111111 !important;
+}
+#btn-barra-registro:hover {
+  background-color: #111111 !important;
+  color: #ffffff !important;
+}
+/* ==========================================================================
+   MÓVIL RESPONSIVE: ADAPTACIÓN PARA CELULARES (PANTALLAS PEQUEÑAS)
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  /* 1. Permitimos que el header se organice de forma flexible en móviles */
+  .site-header {
+    display: flex !important;
+    flex-wrap: wrap !important; /* Si no cabe, baja los elementos de forma ordenada */
+    justify-content: space-between !important;
+    padding: 12px 20px !important;
+    gap: 10px !important;
+  }
+
+  /* El nombre de la marca ocupa su espacio a la izquierda */
+  .brand {
+    font-size: 1.2rem !important;
+  }
+
+  /* 2. Agrupamos los botones de acción para que se vuelvan más compactos */
+  .header-actions {
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  #usuario-desconectado {
+    gap: 4px !important;
+  }
+
+  /* 3. Reducimos el tamaño interno de los botones en el celular para que quepan */
+  #btn-abrir-login,
+  #btn-barra-registro,
+  #btn-cerrar-sesion,
+  .clear-bag-button,
+  .bag-button {
+    padding: 5px 8px !important; /* Relleno más pequeño */
+    font-size: 0.65rem !important; /* Letra ligeramente más compacta */
+    letter-spacing: 0.5px !important;
+  }
+
+  /* 4. Corregimos el botón Hamburguesa para que no se mueva de su lugar */
+  .hamburguesa-button {
+    margin-left: 5px !important;
+  }
+
+  /* 5. ARREGLO DEL MENÚ DESPLEGABLE EN EL MÓVIL */
+  /* Hacemos que en el celular se abra centrado o pegado al borde derecho de forma limpia */
+  .menu-principal,
+  .nav-principal {
+    position: absolute !important;
+    top: 100% !important; /* Se posiciona justo debajo del header */
+    right: 15px !important; /* Separado del borde derecho del celular */
+    left: 15px !important; /* Ocupa el ancho disponible de la pantalla de forma simétrica */
+    width: auto !important; /* Ya no tiene un ancho fijo que se desborde */
+    max-width: calc(100% - 30px) !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+    padding: 20px !important;
+  }
+}
 
 
 
